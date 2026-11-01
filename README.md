@@ -12,16 +12,12 @@ It is designed not to damage your files, but it may leave copies of changed file
 
 `reclaim` needs macOS 27 or later on Apple silicon.
 
+NOTE: Reclaim has been written by Opus 5.5 and reviewed for safety by Astra max.
+
 ## Install
 
 ```sh
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/jonashaag/reclaim/releases/latest/download/reclaim-installer.sh | sh
-```
-
-With a Rust toolchain, you can also build it yourself:
-
-```sh
-cargo install --git https://github.com/jonashaag/reclaim
+curl -fsSL https://github.com/jonashaag/reclaim/releases/latest/download/reclaim-installer.sh | sh
 ```
 
 ## Usage
@@ -55,6 +51,7 @@ If it prints a hint to pass the directories these files were cloned from, add th
 - It leaves hard links, files of other users, files with ACLs, iCloud files and files that your programs have open for writing alone.
 - A replaced file gets a new inode number. `git status` therefore reads it once more, and Time Machine backs it up once more.
 - Time Machine local snapshots keep the old blocks until they are deleted, so the free space may only grow after that.
+  Note: Interaction with and potential side effects on Time Machine are untested.
 - Files compressed with the default algorithm are only verified to be readable on macOS 27. If older macOS versions may read them, use `--algorithm lzfse`.
 
 ## Safety
