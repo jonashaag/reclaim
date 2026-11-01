@@ -5,6 +5,7 @@ edition = "2024"
 description = "Frees disk space on APFS by cloning identical files and transparently compressing the rest"
 repository = "https://github.com/jonashaag/reclaim"
 homepage = "https://github.com/jonashaag/reclaim"
+license = "ISC"
 
 [dependencies]
 blake3 = "1.8.7"
